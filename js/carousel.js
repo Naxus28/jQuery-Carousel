@@ -2,15 +2,14 @@ $(document).ready(function() {
   // carousel images index
   var index = 0;
 
-  // setters
-  var setImage = function(sliderDiv, images, index) {
-    return sliderDiv.find('.first_image').attr('src', images[index]);
+  var setImage = function(carouselDiv, images, index) {
+    return carouselDiv.find('.first_image').attr('src', images[index]);
   }
-  var setCaption = function(sliderDiv, captions, index) {
-    return sliderDiv.find('.caption').html(captions[index]);
+  var setCaption = function(carouselDiv, captions, index) {
+    return carouselDiv.find('.caption').html(captions[index]);
   }
 
-  var moveCarousel = function(images, direction, sliderDiv, captions) {
+  var moveCarousel = function(images, direction, carouselDiv, captions) {
     if ( direction === "next" ) {
       index++;
     } else {
@@ -25,13 +24,13 @@ $(document).ready(function() {
     }
 
     // set content
-    setImage(sliderDiv, images, index);
-    setCaption(sliderDiv, captions, index);
+    setImage(carouselDiv, images, index);
+    setCaption(carouselDiv, captions, index);
   }
 
   $.fn.carousel = function() {
     $(this).each(function() {
-      var sliderDiv = $(this).closest('.slider'); 
+      var carouselDiv = $(this).closest('.carousel'); 
       var images = $(this).data('images');
       var captions = $(this).data('captions');
       var directions = $(this).find('img.direction');
@@ -45,7 +44,7 @@ $(document).ready(function() {
       directions.each(function() {
         $(this).on('click',function() {            
             var direction = $(this).data('direction'); //cache the arrow that was clicked
-            moveCarousel(images, direction, sliderDiv, captions);
+            moveCarousel(images, direction, carouselDiv, captions);
         });
       });
     }); 

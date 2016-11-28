@@ -5,7 +5,10 @@ body{
   background: #69A4E3;
   margin-top: 100px;
 }
-div.slider{
+h1{
+  text-align: center;
+}
+div.carousel{
   position: relative;
   width: 400px;
   margin: 160px auto 0;
